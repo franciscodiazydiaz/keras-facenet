@@ -1,23 +1,42 @@
-# keras-facenet
-Facenet implementation by Keras2
+# Facenet: Face Recognition using Keras
+
+This is a high-level implementation of the face recognizer described
+in the paper ["FaceNet: A Unified Embedding for Face Recognition and Clustering"](http://arxiv.org/abs/1503.03832)
+using the pre-trained model by [davidsandberg](https://github.com/davidsandberg/facenet)
+The code was initially written by nyoki-mtl and forked from his
+repository [keras-facenet](https://github.com/nyoki-mtl/keras-facenet).
+
+## Getting started
+
+1. Follow Pretrained model instructions to download the Facenet model
+2. Run Jupiter Notebook either using Docker compose or your local
+   environment.
+    a. For Docker compose execute: `docker-compose up`
+    b. For the local environment (Python 3): `run.sh`
+3. Preprocess the dataset
+   [pre-process-dataset.ipynb](notebook/pre-process-dataset.ipynb)
+4. Train the SVM model [svm-classification.ipynb](svm-classification/svm.ipynb)
+5. Run a webcam demo using the trained model
+   [demo-webcam.ipynb](demo-webcam.ipynb)
 
 ## Pretrained model
+
+### Keras by nyoki-mtl
+
 You can quickly start facenet with pretrained Keras model (trained by MS-Celeb-1M dataset).
 - Download model from [here](https://drive.google.com/open?id=1pwQ3H4aJ8a6yyJHZkTwtjcL4wYWQb7bn) and save it in model/keras/
 
+### Tensorflow by davidsandberg
 
-You can also create Keras model from pretrained tensorflow model.
+You can also create Keras model from pretrained Tensorflow model:
+
 - Download model from [here](https://github.com/davidsandberg/facenet) and save it in model/tf/
-- Convert model for Keras in [tf_to_keras.ipynb](https://github.com/nyoki-mtl/keras-facenet/blob/master/notebook/tf_to_keras.ipynb)
+- Convert model for Keras in [tf_to_keras.ipynb](notebook/tf_to_keras.ipynb)
 
+Note: Latest version of pre-train models have an input layer of 512
+instead of 128. If you are converting the model from Tensorflow to Keras
+you should specify this on the inicialization of the class `InceptionResNetV1`.
 
-## Demo
-- [Face vector calculation](https://github.com/nyoki-mtl/keras-facenet/blob/master/notebook/demo-images.ipynb)
-- [Classification with SVM](https://github.com/nyoki-mtl/keras-facenet/blob/master/notebook/demo-svm.ipynb)
-- [Web camera demo](https://github.com/nyoki-mtl/keras-facenet/blob/master/notebook/demo-webcam.ipynb)
-
-## Environments
-Ubuntu16.04 or Windows10  
-python3.6.2  
-tensorflow: 1.3.0  
-keras: 2.1.2  
+```python
+model = InceptionResNetV1(classes=512)
+```
