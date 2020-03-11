@@ -8,15 +8,16 @@ repository [keras-facenet](https://github.com/nyoki-mtl/keras-facenet).
 
 ## Getting started
 
-1. Follow Pretrained model instructions to download the Facenet model
+1. Follow Pretrained model [instructions](#pretrained-model) to download the Facenet model
 2. Run Jupiter Notebook either using Docker compose or your local
    environment.
-    a. For Docker compose execute: `docker-compose up`
-    b. For the local environment (Python 3): `run.sh`
-3. Preprocess the dataset
+    - For Docker compose execute: `docker-compose up`
+    - For the local environment (Python 3): `run.sh`
+3. Copy dataset images to `data/images`
+4. Preprocess the dataset
    [pre-process-dataset.ipynb](notebook/pre-process-dataset.ipynb)
-4. Train the SVM model [svm-classification.ipynb](svm-classification/svm.ipynb)
-5. Run a webcam demo using the trained model
+5. Train the SVM model [svm-classification.ipynb](svm-classification/svm.ipynb)
+6. Run a webcam demo using the trained model
    [demo-webcam.ipynb](demo-webcam.ipynb)
 
 ## Pretrained model
@@ -24,13 +25,13 @@ repository [keras-facenet](https://github.com/nyoki-mtl/keras-facenet).
 ### Keras by nyoki-mtl
 
 You can quickly start facenet with pretrained Keras model (trained by MS-Celeb-1M dataset).
-- Download model from [here](https://drive.google.com/open?id=1pwQ3H4aJ8a6yyJHZkTwtjcL4wYWQb7bn) and save it in model/keras/
+- Download model from [here](https://drive.google.com/open?id=1pwQ3H4aJ8a6yyJHZkTwtjcL4wYWQb7bn) and save it in `model/keras/`
 
 ### Tensorflow by davidsandberg
 
-You can also create Keras model from pretrained Tensorflow model:
+You can also convert the Tensorflow model to Keras from the pretrained models:
 
-- Download model from [here](https://github.com/davidsandberg/facenet) and save it in model/tf/
+- Download model from [here](https://github.com/davidsandberg/facenet) and save it in `model/tf/`
 - Convert model for Keras in [tf_to_keras.ipynb](notebook/tf_to_keras.ipynb)
 
 Note: Latest version of pre-train models have an input layer of 512
@@ -40,3 +41,9 @@ you should specify this on the inicialization of the class `InceptionResNetV1`.
 ```python
 model = InceptionResNetV1(classes=512)
 ```
+
+## AWS Rekognition
+
+For evaluation proposes is also included the code to test the AWS
+Rekognition service. Take into account that using this service may
+incur in costs.
