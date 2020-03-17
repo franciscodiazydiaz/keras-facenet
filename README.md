@@ -13,7 +13,8 @@ repository [keras-facenet](https://github.com/nyoki-mtl/keras-facenet).
    environment.
     - For Docker compose execute: `docker-compose up`
     - For the local environment (Python 3): `run.sh`
-3. Copy dataset images to `data/images`
+3. A sample dataset is provided in `data/images` but it can be replaced
+   with your own.
 4. Preprocess the dataset
    [pre-process-dataset.ipynb](notebook/pre-process-dataset.ipynb)
 5. Train the SVM model [svm-classification.ipynb](svm-classification/svm.ipynb)
@@ -27,14 +28,16 @@ repository [keras-facenet](https://github.com/nyoki-mtl/keras-facenet).
 You can quickly start facenet with pretrained Keras model (trained by MS-Celeb-1M dataset).
 - Download model from [here](https://drive.google.com/open?id=1pwQ3H4aJ8a6yyJHZkTwtjcL4wYWQb7bn) and save it in `model/keras/`
 
-### Tensorflow by davidsandberg
+### Tensorflow by David Sandberg
 
 You can also convert the Tensorflow model to Keras from the pretrained models:
 
-- Download model from [here](https://github.com/davidsandberg/facenet) and save it in `model/tf/`
-- Convert model for Keras in [tf_to_keras.ipynb](notebook/tf_to_keras.ipynb)
+- Download model from [here](https://github.com/davidsandberg/facenet) and save it in `model/tf/` (keep the model version for further reference)
+- Open [tf_to_keras.ipynb](notebook/tf_to_keras.ipynb) to convert the model for Keras
+- Update the variable `model_version`
+- Execute the Notebook.
 
-Note: Latest version of pre-train models have an input layer of 512
+Note: Latest version of pre-train models have an output layer of 512
 instead of 128. If you are converting the model from Tensorflow to Keras
 you should specify this on the inicialization of the class `InceptionResNetV1`.
 
