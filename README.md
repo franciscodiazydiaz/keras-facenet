@@ -33,7 +33,7 @@ You can quickly start facenet with pretrained Keras model (trained by MS-Celeb-1
 You can also convert the Tensorflow model to Keras from the pretrained models:
 
 - Download model from [here](https://github.com/davidsandberg/facenet) and save it in `model/tf/` (keep the model version for further reference)
-- Open [tf_to_keras.ipynb](notebook/tf_to_keras.ipynb) to convert the model for Keras
+- Open [tf-to-keras.ipynb](notebook/tf-to-keras.ipynb) to convert the model for Keras
 - Update the variable `model_version`
 - Execute the Notebook.
 
